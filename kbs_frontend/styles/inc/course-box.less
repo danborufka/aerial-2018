@@ -1,0 +1,115 @@
+#termine {
+  padding-bottom: 25px;
+}
+#course-container {
+  table {
+    border: none;
+    tr, tbody, td, th {
+      border: none;
+    }
+  }
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+.course-level-head {
+  background: rgba(130,36,227,0.12);
+  box-sizing: border-box;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.course-level-box {
+  margin-bottom: 5px;
+}
+
+.course-level-content {
+  margin-bottom: 10px;
+  display: none;
+}
+
+
+.booking-button-wrapper {
+  text-align: right;
+}
+
+#course-container .booking-button {
+  text-align: center;
+  display: inline-block;
+  min-width: 200px;
+  margin: 2px;
+  padding: 9px 5px;
+  background: rgba(130,36,227,0.12);
+  color: #000;
+  font-weight: bold !important;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover {
+    background: rgba(130,36,227,0.24);
+  }
+}
+
+@media (max-width: 900px) {
+  .small-hidden {
+    display: none;
+  }
+}
+
+.small-grid-level {
+    display: none;
+    width: 500px;
+    margin: 0px auto;
+    
+    ul {
+      list-style-type: none;
+      padding-left: 15px;
+      margin: 20px 0px 0px 0px;
+    }
+    .booking-button-wrapper {
+      padding: 2px 15px 2px 15px;
+    }
+    .booking-button {
+      float: left;
+      width: 100%;
+      margin: 0px 0px 22px 0px !important;
+    }    
+  }
+
+@media (max-width: 650px) {
+  .desktop-table-level {
+    display: none;
+  }
+  .small-grid-level {
+    display: block;
+  }
+  #course-container {
+    h3, h4 {
+      margin-left: 10px;
+    }
+    p {
+      margin-left: 15px !important;
+    }
+  }
+  .course-level-head {
+    padding: 15px 15px;
+  }
+  .booking-button {
+    padding: 15px 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  
+  .small-grid-level {
+    width: 100%;
+  }
+}

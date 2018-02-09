@@ -1,0 +1,283 @@
+.loading:hover {
+  cursor: progress !important;
+}
+.loading tr:hover {
+  cursor: progress !important;
+}
+.rb-button,
+.rb-button3 {
+  display: inline-block;
+  min-width: 210px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 6px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.rb-button:hover,
+.rb-button3:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+.rb-button3 {
+  min-width: 200px;
+  width: 200px;
+  margin-right: 0px;
+  margin-left: 5px;
+}
+.rb-button3:first-child {
+  margin-left: 0px;
+}
+.rb-mini-button {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 2px 5px 1px 5px;
+}
+.rb-mini-button:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+button.rb-button,
+input.rb-button,
+button.rb-button3,
+input.rb-button3 {
+  padding: 8px 5px 7px 5px;
+}
+#search-option-container,
+.input-container {
+  margin-top: 10px;
+}
+.select-with-symbols {
+  font-size: 12px !important;
+}
+select,
+input:not([type="submit"]) {
+  min-height: 24px;
+}
+.rb-readonly {
+  background: #DADADA;
+}
+.color-green {
+  color: #167F16;
+}
+.color-red {
+  color: #E61616;
+}
+#header-line {
+  min-width: 1300px;
+}
+#container {
+  min-width: 1300px;
+  min-height: 600px;
+  background: #e5daf2;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+#title {
+  color: #49004a;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;
+}
+#course-detail-container ul {
+  display: inline-block;
+  max-width: 600px;
+  font-size: 12px;
+  margin-right: 10px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+#course-detail-container-in-two-columns ul {
+  display: inline-block;
+  max-width: 270px;
+  float: left;
+  font-size: 16px;
+  margin-right: 10px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+#course-detail-container-in-two-columns ul:first-child {
+  padding-right: 30px;
+  max-width: 330px;
+}
+.courses-list-table table,
+.table-registrations table {
+  font-size: 15px;
+  border-collapse: collapse;
+}
+.courses-list-table table,
+.table-registrations table,
+.courses-list-table th,
+.table-registrations th,
+.courses-list-table td,
+.table-registrations td {
+  border: 2px solid #614061;
+}
+.courses-list-table th,
+.table-registrations th,
+.courses-list-table td,
+.table-registrations td {
+  padding: 4px;
+}
+.courses-list-table .td-overflow,
+.table-registrations .td-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 150px;
+  max-width: 420px;
+}
+.courses-list-table th,
+.table-registrations th {
+  background: #8A5C8B;
+  background: linear-gradient(to bottom, #8A5C8B 0%, #7C537D 100%);
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.courses-list-table tr:nth-child(even),
+.table-registrations tr:nth-child(even) {
+  color: #000;
+  background: #fff;
+}
+.courses-list-table tr:nth-child(odd),
+.table-registrations tr:nth-child(odd) {
+  color: #000;
+  background: #DBCBDB;
+}
+.courses-list-table .td-center,
+.table-registrations .td-center {
+  text-align: center;
+}
+.courses-list-table .ui-selecting,
+.table-registrations .ui-selecting {
+  background: #94B8FF !important;
+}
+.courses-list-table .ui-selected,
+.table-registrations .ui-selected {
+  background: #6699FF !important;
+  color: #fff !important;
+}
+.table-registrations tr:not(:first-child):hover {
+  cursor: pointer;
+}
+#default-button-bar-container {
+  margin-top: 0px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+#default-button-bar-container fieldset {
+  padding: 3px 15px;
+  border: 1px solid #c3bace;
+}
+#default-button-bar-container form {
+  display: inline-block;
+}
+#default-button-bar-container form label {
+  display: inline-block;
+  min-width: 65px;
+  font-size: 14px;
+}
+#default-button-bar-container form input:not([type="submit"]),
+#default-button-bar-container form select {
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 180px;
+  border-radius: 4px;
+  border: 1px solid rgba(73, 0, 74, 0.3);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#default-button-bar-container form #search-option-row2 {
+  display: inline-block;
+}
+#button-minimize-registration {
+  min-width: 70px;
+}
+#search-button {
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  display: inline-block;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  padding: 6px 29px;
+  font-size: 15px;
+}
+.course-button {
+  display: inline-block;
+  min-width: 210px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 6px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+#begin_date1,
+#end_date1 {
+  padding: 3px 3px;
+}
+button.rb-button,
+input.rb-button {
+  padding: 8px 30px 7px 30px;
+}
+#button-expand-registration {
+  margin-top: 5px;
+}
+#manual-registration-form {
+  float: left;
+}
+.manual-registration-element {
+  float: left;
+  display: inline-block;
+  margin-top: 32px;
+}
+#manual-registration-container-expanded {
+  display: none;
+  min-width: 1300px;
+}
+#button-student-list {
+  margin-left: 17px;
+}
+.r-input-rank {
+  min-width: 30px;
+  max-width: 50px;
+  text-align: center;
+}
+#r-input-status {
+  width: 115px;
+}
+#edit-mode-button-bar-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.r-price-payed input {
+  width: 55px;
+}
+.r-payment-reminder input {
+  width: 100px;
+}
+.input-is-present input {
+  width: 15px;
+  min-height: 15px;
+  margin: 8px;
+}

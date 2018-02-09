@@ -1,0 +1,175 @@
+.loading:hover {
+  cursor: progress !important;
+}
+.loading tr:hover {
+  cursor: progress !important;
+}
+.rb-button,
+.rb-button3 {
+  display: inline-block;
+  min-width: 210px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 6px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.rb-button:hover,
+.rb-button3:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+.rb-button3 {
+  min-width: 200px;
+  width: 200px;
+  margin-right: 0px;
+  margin-left: 5px;
+}
+.rb-button3:first-child {
+  margin-left: 0px;
+}
+.rb-mini-button {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 2px 5px 1px 5px;
+}
+.rb-mini-button:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+button.rb-button,
+input.rb-button,
+button.rb-button3,
+input.rb-button3 {
+  padding: 8px 5px 7px 5px;
+}
+#search-option-container,
+.input-container {
+  margin-top: 10px;
+}
+.select-with-symbols {
+  font-size: 12px !important;
+}
+select,
+input:not([type="submit"]) {
+  min-height: 24px;
+}
+.rb-readonly {
+  background: #DADADA;
+}
+.color-green {
+  color: #167F16;
+}
+.color-red {
+  color: #E61616;
+}
+#header-line {
+  min-width: 1200px;
+}
+#container {
+  min-width: 1300px;
+  min-height: 600px;
+  background: #e5daf2;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+#title {
+  color: #49004a;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;
+}
+.input-row label {
+  vertical-align: top;
+  display: inline-block;
+  width: 90px;
+  font-size: 14px;
+}
+#input-column1 {
+  float: left;
+  margin-right: 20px;
+}
+#input-column2 {
+  display: inline-block;
+  margin-right: 20px;
+}
+#input-column3 {
+  vertical-align: top;
+  display: inline-block;
+}
+#search-option-row2 {
+  display: inline-block;
+}
+#search-option-row2-from {
+  min-width: 66px;
+  margin-left: -5px;
+}
+#search-option-row2-to {
+  min-width: 64px;
+  margin-left: -2px;
+}
+.input-row input:not([type="submit"]),
+form select,
+form textarea {
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 340px;
+  border-radius: 4px;
+  border: 1px solid rgba(73, 0, 74, 0.3);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+textarea {
+  resize: vertical;
+}
+.rb-button {
+  display: inline-block;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 6px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  min-width: 210px;
+}
+.rb-button a {
+  display: block;
+  padding: 6px 15px;
+}
+.rb-button p {
+  padding: 6px 15px;
+}
+input.rb-button {
+  padding: 8px 15px;
+}
+button.rb-button {
+  padding: 8px 15px;
+}
+#button-bar2 {
+  margin-top: 15px;
+  display: block;
+}
+#c-save-message {
+  margin-top: 20px;
+  display: inline-block;
+  max-width: 800px;
+}

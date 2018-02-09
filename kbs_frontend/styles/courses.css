@@ -1,0 +1,221 @@
+#termine {
+  padding-bottom: 25px;
+}
+#course-container table {
+  border: none;
+}
+#course-container table tr,
+#course-container table tbody,
+#course-container table td,
+#course-container table th {
+  border: none;
+}
+#course-container h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+#course-container h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.course-level-head {
+  background: rgba(130, 36, 227, 0.12);
+  box-sizing: border-box;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  font-style: italic;
+}
+.course-level-box {
+  margin-bottom: 5px;
+}
+.course-level-content {
+  margin-bottom: 10px;
+  display: none;
+}
+.booking-button-wrapper {
+  text-align: right;
+}
+#course-container .booking-button {
+  text-align: center;
+  display: inline-block;
+  min-width: 200px;
+  margin: 2px;
+  padding: 9px 5px;
+  background: rgba(130, 36, 227, 0.12);
+  color: #000;
+  font-weight: bold !important;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#course-container .booking-button:hover {
+  background: rgba(130, 36, 227, 0.24);
+}
+@media (max-width: 900px) {
+  .small-hidden {
+    display: none;
+  }
+}
+.small-grid-level {
+  display: none;
+  width: 500px;
+  margin: 0px auto;
+}
+.small-grid-level ul {
+  list-style-type: none;
+  padding-left: 15px;
+  margin: 20px 0px 0px 0px;
+}
+.small-grid-level .booking-button-wrapper {
+  padding: 2px 15px 2px 15px;
+}
+.small-grid-level .booking-button {
+  float: left;
+  width: 100%;
+  margin: 0px 0px 22px 0px !important;
+}
+@media (max-width: 650px) {
+  .desktop-table-level {
+    display: none;
+  }
+  .small-grid-level {
+    display: block;
+  }
+  #course-container h3,
+  #course-container h4 {
+    margin-left: 10px;
+  }
+  #course-container p {
+    margin-left: 15px !important;
+  }
+  .course-level-head {
+    padding: 15px 15px;
+  }
+  .booking-button {
+    padding: 15px 5px;
+  }
+}
+@media (max-width: 500px) {
+  .small-grid-level {
+    width: 100%;
+  }
+}
+#booking-form-container,
+#voucher-form-container {
+  display: none;
+}
+#booking-form-container .booking-button,
+#voucher-form-container .booking-button {
+  text-align: center;
+  display: block;
+  margin: 0px;
+  padding: 9px 5px;
+  background: rgba(130, 36, 227, 0.12);
+  color: #000;
+  font-weight: bold !important;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#booking-form-container .booking-button:hover,
+#voucher-form-container .booking-button:hover {
+  background: rgba(130, 36, 227, 0.24);
+}
+.kbs-clearfix:before,
+.kbs-clearfix:after {
+  content: "";
+  display: table;
+}
+.kbs-clearfix:after {
+  clear: both;
+}
+#booking-form-box {
+  padding: 15px;
+  display: block;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  margin: 10px auto;
+}
+#booking-form-box h3 {
+  margin-top: 5px;
+  text-align: left;
+}
+#booking-form-box ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+#booking-form-box label {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+#booking-form-box input {
+  width: 100%;
+  display: block;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+#booking-form-box input[type="checkbox"] {
+  float: left;
+  width: auto;
+  margin-right: 10px;
+}
+#booking-form-box #submit-booking-button {
+  color: #000;
+}
+#kbs-button-bar {
+  margin-top: 10px;
+  clear: both;
+  width: 100%;
+}
+#kbs-button-bar .kbs-button-bar {
+  margin: 0px;
+  width: 100%;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  min-width: 20px !important;
+}
+#wrapper-submit-booking-button {
+  float: left;
+  padding-right: 3px;
+  width: 80%;
+}
+#wrapper-go-back-button {
+  float: right;
+  padding-left: 3px;
+  width: 20%;
+}
+#back-box {
+  margin: 5px auto;
+}
+#back-box a.booking-button {
+  width: 120px;
+  float: right;
+}
+#booking-form-box,
+#back-box {
+  width: 450px;
+}
+@media (max-width: 450px) {
+  #booking-form-box,
+  #back-box {
+    width: 100%;
+    min-width: 300px;
+    border: none;
+  }
+}
+.booking-button {
+  text-align: center;
+  display: inline-block;
+  margin: 2px;
+  padding: 9px 5px;
+  background: rgba(130, 36, 227, 0.12);
+  color: #000;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.booking-button:hover {
+  background: rgba(130, 36, 227, 0.24);
+}

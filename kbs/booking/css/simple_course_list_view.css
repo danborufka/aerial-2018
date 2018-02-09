@@ -1,0 +1,196 @@
+.loading:hover {
+  cursor: progress !important;
+}
+.loading tr:hover {
+  cursor: progress !important;
+}
+.rb-button,
+.rb-button3 {
+  display: inline-block;
+  min-width: 210px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 6px 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.rb-button:hover,
+.rb-button3:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+.rb-button3 {
+  min-width: 200px;
+  width: 200px;
+  margin-right: 0px;
+  margin-left: 5px;
+}
+.rb-button3:first-child {
+  margin-left: 0px;
+}
+.rb-mini-button {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  font-size: 14px;
+  padding: 2px 5px 1px 5px;
+}
+.rb-mini-button:hover {
+  text-shadow: 0px 0px 8px #fff;
+  cursor: pointer;
+}
+button.rb-button,
+input.rb-button,
+button.rb-button3,
+input.rb-button3 {
+  padding: 8px 5px 7px 5px;
+}
+#search-option-container,
+.input-container {
+  margin-top: 10px;
+}
+.select-with-symbols {
+  font-size: 12px !important;
+}
+select,
+input:not([type="submit"]) {
+  min-height: 24px;
+}
+.rb-readonly {
+  background: #DADADA;
+}
+.color-green {
+  color: #167F16;
+}
+.color-red {
+  color: #E61616;
+}
+#header-line {
+  min-width: 640px;
+}
+#container {
+  min-width: 640px;
+  min-height: 600px;
+  background: #e5daf2;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+#title {
+  color: #49004a;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0px 10px 0px;
+}
+.courses-list-table table {
+  font-size: 13px;
+  border-collapse: collapse;
+}
+.courses-list-table table,
+.courses-list-table th,
+.courses-list-table td {
+  border: 2px solid #614061;
+}
+.courses-list-table th,
+.courses-list-table td {
+  padding: 2px 4px;
+}
+.courses-list-table .td-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 60px;
+  max-width: 250px;
+}
+.courses-list-table tr:not(:first-child):hover {
+  cursor: cell;
+}
+.courses-list-table th {
+  background: #8A5C8B;
+  background: linear-gradient(to bottom, #8A5C8B 0%, #7C537D 100%);
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.courses-list-table tr:nth-child(even) {
+  color: #000;
+  background: #fff;
+}
+.courses-list-table tr:nth-child(odd) {
+  color: #000;
+  background: #DBCBDB;
+}
+.courses-list-table .td-center {
+  text-align: center;
+}
+.courses-list-table .ui-selecting {
+  background: #94B8FF !important;
+}
+.courses-list-table .ui-selected {
+  background: #6699FF !important;
+  color: #fff !important;
+}
+#search-option-container {
+  display: inline-block;
+  padding: 4px 10px 0px 10px;
+  border: 1px solid #c3bace;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+#search-option-container input[type="submit"] {
+  margin-bottom: 0px;
+}
+#search-option-container form label {
+  display: inline-block;
+  min-width: 65px;
+  font-size: 14px;
+}
+#search-option-container form input:not([type="submit"]),
+#search-option-container form select {
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 150px;
+  border-radius: 4px;
+  border: 1px solid rgba(73, 0, 74, 0.3);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#search-option-container form #search-option-row2 {
+  display: inline-block;
+}
+#search-option-container form #search-option-row2 select {
+  margin-bottom: 4px;
+}
+#begin_date1,
+#end_date1 {
+  padding: 3px 3px;
+}
+.button-registrations {
+  border-radius: 2px;
+  padding: 5px 0px;
+  box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+}
+.button-registrations:hover {
+  box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.button-course-name {
+  border-radius: 2px;
+  padding: 5px 5px;
+  box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+}
+.button-course-name:hover {
+  box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}

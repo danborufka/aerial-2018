@@ -1,0 +1,392 @@
+@main-color01: #49004a; // = rgba(73,0,74,1);
+@main-color-gradient01: @main-color01;
+@main-color-gradient02: rgba(73,0,74,0.8);
+
+#header-line{
+	min-width: 800px;
+}
+
+body{
+	background: #f2ecf8;
+}
+
+#super-container-cal-overview {
+  //min-height: 3500px;
+}
+
+#top-container {
+	background: #f2ecf8;//#faf7fc; //#f9f5fc; //#f2ecf8; //#e5daf2;
+	width: 800px;
+	margin: auto;
+	margin-top: 10px;
+	box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.15) inset;
+	padding: 20px 20px 20px 20px;
+}
+
+#cal-view-container{
+  background: #f2ecf8; //#f9f5fc; //#f2ecf8; //#e5daf2;
+  width: 800px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.15) inset;
+  padding: 20px 20px 20px 20px;
+  table {
+    border-collapse: collapse !important;
+  }
+  table, th, td {
+    border: 2px solid #614061 !important;
+  }
+  
+  th{
+    background: #8a5c8b;
+    background: linear-gradient(to bottom, #8a5c8b 0%, #7c537d 100%);
+    color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 105px;
+  }
+  
+  th {
+    font-size: 15px;
+  }
+  td {
+    font-size: 12px;
+    vertical-align: top;
+    padding: 3px;
+    max-width: 105px;
+    height: 90px;
+    &.week-number {
+      vertical-align: middle;
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  }
+  
+  #five-days-table td {
+    font-size: 14px;
+  }
+  
+  .day-number {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .course-box {
+    background:  #8daceb; //#adc2eb;
+    padding: 3px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover{
+      box-shadow: inset 0px 0px 10px 4px rgba(0,0,0,0.35);
+      cursor: pointer;
+    }
+  }
+  
+ .event-box {
+    background:  #7db398;
+    padding: 3px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover{
+      box-shadow: inset 0px 0px 10px 4px rgba(0,0,0,0.35);
+      cursor: pointer;  
+    }
+  }
+ .my-course-y { // Meine Kurse
+   background: #3c71dd;
+ }
+ 
+ .event-box-1 { // Normal
+   background: #c68c53;
+ }
+ .event-box-2 { // Kursvorschlag
+   background: #00b386;
+   //border: 1px dashed black;
+ }
+ .event-box-3 { // Trainertreffen
+   background:  #ffbf40;
+ }
+ .event-box-4 { // Feiertage 
+   background:  #bb99ff;
+ }
+ .event-box-5 { // Special
+   background: #e5e600;
+ }
+ .event-box-6 { // Privater Termin
+   background: #bfbfbf;
+ }
+ .event-box-7 { // Geheimer Termin
+   background: #fff;
+   border: 1px solid #000;
+ }
+ .my-course { // Meine Kurse
+   background: #3c71dd;
+ }
+ 
+  .event-overlap {
+    //background: #ff794d;
+    border-right:    5px solid #ff3333 !important; //#ff794d;
+    //border-bottom: 3px solid #ff794d;
+  }
+  
+}
+
+.full-day {
+  text-align: center !important;
+}
+
+#controller-box {
+  select, input {
+    width: 200px;
+    border: 1px solid rgba(73, 0, 74, 0.3);
+    border-radius: 4px;
+    text-alignment: center;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+  }
+  #controller-left select {
+    width: 220px;
+  }
+  #controller-mid select {
+    width: 110px;
+  }
+  #controller-mid input {
+    width: 114px;
+  }
+  select#cal-view-type {
+    width: 143px;
+  }
+}
+
+#controller-left {
+  float: left;
+  width: 36%;
+  //background: green;
+}
+#controller-mid {
+  float: left;
+  width: 33%;
+  //background: blue;
+  position: relative;
+  min-height: 60px;
+  #month-year-box {
+    float: left;
+    padding: 0px 20px 0px 20px;
+  }
+  #start-date-box {
+    float: left;
+    padding: 15px 20px 0px 20px;
+  }
+  .button-month {
+    line-height: 54px;
+    color: #fff;
+    font-size: 60px;
+    font-weight: 700;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    &:hover {
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+      cursor: pointer;    
+    }
+    
+  }
+  #button-month-prev {
+    float: left;
+    padding-left: 12px;
+  }
+  #button-month-next {
+    float: left;
+  }
+  
+}
+#controller-right {
+  //background: gray;
+  float: right;
+  width: 30%;
+  min-height: 10px;
+  select {
+    float: right;
+  }
+  .mini-button-view-type {
+    float: right;
+  }
+  #button-container {
+    float: right;
+  }
+  .button-cal-control {
+    border: none;
+    border-radius: 0px;
+    font-size: 14px;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    min-width: 95px;
+    
+    background: @main-color01;
+    background: linear-gradient(to bottom,  @main-color-gradient02 0%, @main-color-gradient01 100%);
+    &:hover {
+      text-shadow: 0px 0px 8px #fff;
+      cursor: pointer;    
+    }
+  }
+}
+
+div.button-cal-control {
+  display: inline-block;
+  text-align: center;
+}
+
+
+.button-cal-control-first {
+    margin-right: 5px;
+  
+}
+
+#welcome-message {
+  box-sizing: border-box;
+  width: 460px;
+  min-height: 30px;
+  max-height: 90px;
+  border-radius: 3px;
+  padding: 10px;
+  background: #fff !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#main-title{
+	color: #49004a;
+	font-size: 25px;
+	font-weight: bold;
+	padding-bottom: 0px;
+}
+
+#course-detail-container ul {
+  display: inline-block;
+  
+  max-width: 600px;
+  float:left;
+  font-size: 12px;
+  margin-right: 10px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+#center-box-wrapper {
+  position: fixed;
+  top: 15%;
+  min-height: 500px;
+  width: 100%;
+  margin: auto;
+  display: none;
+}
+
+#center-box {
+  min-height: 500px;
+  width: 800px;
+  margin: auto;
+}
+
+//  ############### LEGENDE #############
+
+
+#legend-box {
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.15) inset;
+  padding: 20px 20px 20px 20px;
+  width: 800px;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  .legend-column1 {
+    display: inline-block;
+    float: left;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 40px;
+  }
+  .legend-column2 {
+    display: inline-block;
+    float: left;
+    margin-right: 40px;
+  }
+  .legend-column3 {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+.legend-all{
+  margin-left: 20px;
+  border-left-width: 20px;
+  border-left-style: solid;
+  padding-left: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.legend-c{
+  border-left-color: #8daceb;
+}
+.legend-my-c{
+  border-left-color: #3c71dd;
+}
+.legend-1{
+  border-left-color: #c68c53;
+}
+.legend-2{
+  border-left-color: #00b386;
+}
+.legend-3{
+  border-left-color: #ffbf40;
+}
+.legend-4{
+  border-left-color: #bb99ff;
+}
+.legend-6{
+  border-left-color: #bfbfbf;
+}
+.legend-5{
+  border-left-color: #e5e600;
+}
+
+.today-cell {
+  background: #cecece;
+  div.day-number {
+    color: #dedede;
+    background: #757575;
+    box-shadow: inset 0px 0px 10px 4px rgba(0,0,0,0.35);
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+.mini-button-view-type {
+  margin-top: 1px;
+  vertical-align: bottom;
+  margin-left: 4px;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  border-radius: 0px;
+  font-size: 10px;
+  padding: 5px 5px;
+  margin-bottom: 3px;
+  color: #fff;
+  width: 24px;
+  
+  background: @main-color01;
+  background: linear-gradient(to bottom,  @main-color-gradient02 0%, @main-color-gradient01 100%);
+  &:hover {
+    text-shadow: 0px 0px 8px #fff;
+    cursor: pointer;    
+  }
+}

@@ -1,0 +1,68 @@
+#container-submit-membership {
+  .booking-button {
+    text-align: center;
+    display: block;
+    margin: 0px;
+    padding: 9px 5px;
+    background: rgba(130,36,227,0.12);
+    color: #000;
+    font-weight: bold !important;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(130,36,227,0.24);
+    }
+  }
+}
+
+#membership-form-box {
+  padding: 15px;
+  display: block;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  margin: 10px auto;
+  
+  h3 {
+    margin-top: 5px;
+    text-align: left;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0px;
+  }
+  label {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0px;
+  }
+  input {
+    width: 100%;
+    display: block;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    
+    &[type="checkbox"] {
+      float: left;
+      width: auto;
+      margin-right: 10px;
+    }
+  }
+  #submit-booking-button {
+    color: #000;
+  }
+}
+
+
+#membership-form-box {
+    width: 450px;
+}
+
+@media (max-width: 450px) {
+  
+  #membership-form-box {
+      width: 100%;
+      min-width: 300px;
+      border: none;
+  }
+}

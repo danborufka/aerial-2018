@@ -1,0 +1,81 @@
+@import 'import_general';
+
+#header-line{
+	min-width: 640px;
+}
+
+#container {
+	min-width: 640px;
+	min-height: 600px;
+	background: @background;
+	.get_main_container_padding();
+}
+
+#title{
+  .get_title_text_options
+}
+
+
+#course-detail-container ul {
+  display: inline-block;
+  
+  max-width: 600px;
+  float:left;
+  border-radius: 2px;
+  font-size: @course-detail-font-size;
+  margin-right: 10px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+
+
+
+.table-safety-check {
+  table{
+    font-size: 15px;
+    border-collapse: collapse;
+  }
+  table, th, td{
+    border: 2px solid #614061;
+  }
+  th, td{
+    padding: 4px;
+  }
+  .td-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 72px;
+    max-width: 250px;
+  }
+  th {
+    .get_table_headline_options();
+  }
+  .get_alternative_coloring(); // alternative coloring for table rows
+  .td-center {
+    text-align: center;
+  }
+}
+
+
+
+
+
+.rb-checkbox {
+  padding: 0px 10px;
+  input {
+    width: 22px;
+  }
+}
+
+.rb-checkbox-extended {
+  padding: 0px 27px;
+  input {
+    width: 22px;
+  }
+}
+
+table .rb-button3 {
+  margin-bottom: 0px !important;
+}
+

@@ -1,0 +1,86 @@
+#header-line {
+  min-width: 500px;
+}
+body {
+  background: #fff;
+}
+#welcome-box {
+  background: #e5daf2;
+  width: 500px;
+  margin: auto;
+  border-radius: 3px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
+}
+#main-box {
+  background: #e5daf2;
+  width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1) inset;
+  padding: 20px 20px 20px 20px;
+}
+#welcome-message {
+  box-sizing: border-box;
+  width: 460px;
+  min-height: 30px;
+  max-height: 90px;
+  border-radius: 3px;
+  padding: 10px;
+  background: #fff !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rb-msg {
+  box-sizing: border-box;
+  width: 460px;
+  padding: 3px 10px 3px 10px;
+}
+.rb-msg a {
+  float: right;
+  color: #49004a;
+  text-decoration: underline;
+}
+#main-title {
+  color: #49004a;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+#main-box ul li {
+  list-style-type: none;
+  margin-top: 7px;
+}
+#main-box ul li a {
+  color: #fff;
+  font-size: 17px;
+  display: block;
+  background: #49004a;
+  background: linear-gradient(to bottom, rgba(73, 0, 74, 0.8) 0%, #49004a 100%);
+  border: none;
+  border-radius: 0px;
+  padding: 6px 20px;
+  text-align: center;
+}
+#main-box ul li a:hover {
+  text-shadow: 0px 0px 8px #fff;
+}
+#developed-by {
+  width: 500px;
+  margin: 10px auto;
+  text-align: center;
+}
+#developed-by a {
+  color: #000;
+  font-size: 11px;
+  text-shadow: 0px 0px 10px #000;
+}
+#developed-by a:hover {
+  text-shadow: 0px 0px 5px #000;
+}
+@media screen and (min-width: 1685px) {
+  #img-logo {
+    width: 150px;
+  }
+}

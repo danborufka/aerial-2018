@@ -1,0 +1,54 @@
+#termine {
+  padding-bottom: 25px;
+}
+#course-container table {
+  border: none;
+}
+#course-container table tr,
+#course-container table tbody,
+#course-container table td,
+#course-container table th {
+  border: none;
+}
+#course-container h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+#course-container h4 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.course-level-head {
+  background: rgba(130, 36, 227, 0.12);
+  box-sizing: border-box;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  font-style: italic;
+}
+.course-level-box {
+  margin-bottom: 5px;
+}
+.course-level-content {
+  margin-bottom: 10px;
+  display: none;
+}
+.booking-button-wrapper {
+  text-align: right;
+}
+#course-container .booking-button {
+  text-align: center;
+  display: inline-block;
+  min-width: 220px;
+  margin: 2px;
+  padding: 9px 5px;
+  background: rgba(130, 36, 227, 0.12);
+  color: #000;
+  font-weight: bold !important;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#course-container .booking-button:hover {
+  background: rgba(130, 36, 227, 0.24);
+}

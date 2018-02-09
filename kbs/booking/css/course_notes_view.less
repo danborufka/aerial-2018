@@ -1,0 +1,171 @@
+@import 'import_general';
+
+#header-line{
+	min-width: 640px;;
+}
+
+#container {
+	min-width: 640px;
+	min-height: 600px;
+	background: @background;
+	.get_main_container_padding();
+}
+
+#course-detail-container ul {
+  display: inline-block;
+  
+  max-width: 600px;
+  float:left;
+  border-radius: 2px;
+  font-size: @course-detail-font-size;
+  margin-right: 10px;
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+
+#title{
+  .get_title_text_options
+}
+
+.table-notes {
+  table{
+    font-size: 15px;
+    border-collapse: collapse;
+  }
+  table, th, td{
+    border: 2px solid #614061;
+  }
+  th, td{
+    padding: 4px;
+  }
+  .td-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 150px;
+    max-width: 420px;
+  }
+  th {
+    .get_table_headline_options();
+  }
+  .get_alternative_coloring(); // alternative coloring for table rows
+  .td-center {
+    text-align: center;
+  }
+  .ui-selecting {
+    background: @table-row-selecting-color;
+  }
+  .ui-selected {
+    background: @table-row-selected-color;
+    color: #fff !important;
+  }
+}
+
+
+
+.table-registrations tr:not(:first-child):hover{
+    cursor: pointer;
+  }
+
+
+#default-button-bar-container {
+  margin-top: 0px;
+	display: inline-block;
+	margin-bottom: 5px;
+	
+	fieldset{
+    padding: 3px 15px;
+    border: 1px solid #c3bace;
+	}
+	
+	form{
+	  display: inline-block;
+	  label{
+      display: inline-block;
+      min-width: 65px;
+      font-size: 14px;
+    }
+    
+    input:not([type="submit"]), select{
+      padding: 2px 8px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+      width: 180px;
+      border-radius: 4px;
+      border: 1px solid rgba(73,0,74,0.3);
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    #search-option-row2 {
+      display: inline-block;
+    }
+	}
+}
+
+#button-minimize-registration {
+  min-width: 70px;
+}
+
+
+
+
+#search-button {
+  .get_main_color();
+	display: inline-block;
+	color: #fff;
+	border: none;
+	border-radius: 0px;
+	padding: 6px 29px;
+	font-size: 15px;
+}
+
+.course-button {
+  .get_button_style();
+}
+
+
+#begin_date1, #end_date1{
+	padding: 3px 3px;
+}
+
+button.rb-button, input.rb-button {
+  padding: 8px 30px 7px 30px;
+}
+
+
+#button-expand-registration {
+  margin-top: 20px;
+}
+
+#manual-registration-form {
+  float: left;
+}
+.manual-registration-element {
+  float: left;
+  display: inline-block;
+  margin-top: 32px;
+}
+
+
+#manual-registration-container-expanded {
+  display: none;
+  min-width: 1300px;
+}
+
+#button-student-list{
+  margin-left: 17px;
+}
+
+.r-input-rank {
+  min-width: 30px;
+  max-width: 50px;
+  text-align: center;
+}
+
+#r-input-status {
+  width: 115px;
+}
+
+#edit-mode-button-bar-container {
+  //margin-bottom: 10px;
+}
