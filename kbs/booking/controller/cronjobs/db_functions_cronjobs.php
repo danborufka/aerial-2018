@@ -62,7 +62,7 @@ class DB_Functions_Cronjobs_Backoffice extends DB_Connect
         $result = $db->query("UPDATE as_students 
                                 SET membership=0,
                                     mb_end=NOW() 
-                                WHERE (`status` != 2) 
+                                WHERE (`membership` != 2) 
                                 AND (mb_paid_date < NOW() - INTERVAL 5 HOUR)");
 
         if(!$result) echo $db->error;

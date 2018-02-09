@@ -21,13 +21,14 @@ if (isset($_GET["code"]) && $_GET["code"] == "1a4y834p96tj7433hxc1tj7435hxa5") {
 
     if(isset($_GET['debugging'])) {
         echo '<pre>';
-        $updated = $db_functions_cronjobs->backoffice->update_student_statii();            // Memberships abhängig von letzter Zahlung updaten
         
         var_dump('done.');
-        var_dump($updated);
+        //var_dump($updated);
         echo '</pre>';
         exit;
     }
+    
+    $updated = $db_functions_cronjobs->backoffice->update_student_statii();            // Memberships abhängig von letzter Zahlung updaten
 
     $db_functions_cronjobs->backoffice->db_update_preregistrations_waitlist();  // Status vorgemerkt warteliste updaten
 

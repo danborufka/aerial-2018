@@ -12,7 +12,7 @@ class RB_Configuration
     public $title_of_web_application_frontend = "Aerial Silks Vienna";
 
 
-    public $production_mode = 2;
+    public $production_mode = "auto";
     /*		"auto" = automatic detection
      * 		1 = production_mode
      * 		2 = development_mode
