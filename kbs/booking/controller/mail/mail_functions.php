@@ -117,7 +117,6 @@ class Mail_Functions extends Mail_Public_Connect
         global $mail_configuration;
 
         $text = $mail_configuration->get_mail_text("course_change");
-
         $data = $this->db_load_registration_details_for_mailing_from_registration_code($p_registration_code);
         if ($data["error"]) {
             echo $data["error"];
@@ -157,9 +156,7 @@ class Mail_Functions extends Mail_Public_Connect
         $content .= "<a href='" . $link . "'>" . $link . "</a>\r\n\r\n";
 
 
-        $content .= "\r\n" . "Alles Liebe" .
-            ",\r\n\r\n\r\n" .
-            "&nbsp;&nbsp;&nbsp;Euer Aerial Silk Vienna Team";
+        $content .= $this->get_mail_outro();
 
         if (isset($_SESSION["production_mode"]) && $_SESSION["production_mode"] == 1) {
             $mail_to = $p_changemail;
@@ -321,10 +318,22 @@ class Mail_Functions extends Mail_Public_Connect
             'mail_to' => $mail_to);
     }
 
+
+    private function get_mail_greeting($p_prename, $p_surname) 
+    {
+        return "Hallo $p_prename $p_surname, \r\n\r\n";
+    }
+    private function get_mail_outro()
+    {
+        return "\r\n" . "Alles Liebe" .
+            ",\r\n\r\n\r\n" .
+            "&nbsp;&nbsp;&nbsp;Euer Aerial Silk Vienna Team";
+    }
+
     public function generate_mail_membership_registration($p_email, $p_prename, $p_surname)
     {
         $subject = "Anmeldung Mitgliedschaft Aerial Silk Vienna";
-        $content = "Hallo " . $p_prename . " " . $p_surname . "," . "\r\n\r\n";
+        $content = $this->get_mail_greeting($p_prename, $p_surname);
         $content .= "du hast dich für eine Mitgliedschaft bei Aerial Silk Vienna angemeldet." . "\r\n";
         $content .= "Um die Anmeldung abzuschließen überweise bitte den Mitgliedsbeitrag von 50 Euro an:" . "\r\n";
         $content .= "Aerial Silk Vienna" . "\r\n";
@@ -346,6 +355,21 @@ class Mail_Functions extends Mail_Public_Connect
         return array('subject' => $subject,
             'content' => $content,
             'mail_to' => $mail_to);
+    }
+
+    public function send_membership_activation_mail($p_email, $p_prename, $p_surname)
+    {
+        global $mail_configuration;
+
+        $messages = $mail_configuration->get_mail_text('new_membership');
+
+        $subject = $messages['subject'];
+        $content = $this->get_mail_greeting($p_prename, $p_surname);
+        $content .= $messages['text'];
+        $content .= $this->get_mail_outro();
+
+        $content = nl2br($content);
+        $this->send_html_mail_with_signature($p_email, $subject, $content);
     }
 
     public function send_html_mail_with_signature($p_mail_to, $p_subject, $p_html_message_content)
@@ -381,7 +405,7 @@ class Mail_Functions extends Mail_Public_Connect
         $message .= "
 		<br>
 		<br>
-		<img style=\"margin-left: 30px\" src=\"cid:php-cid_logo-$boundary\">
+		<a href=\"http://www.aerialsilk.at/\" style=\"text-decoration: none;\"><img style=\"margin-left: 30px\" src=\"cid:php-cid_logo-$boundary\"></a>
 		<br>
 		<br />Aerial Silk Vienna<br />
 		Domgasse 8, 1010 Wien<br />

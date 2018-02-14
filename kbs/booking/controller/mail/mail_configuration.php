@@ -105,7 +105,7 @@ class Mail_Configuration
                     "text3_4" => $text3_4,
                     "reference" => true,  // Verwendungszweck
                     "link" => $link);
-                break;
+
             case "standard_confirmation":
                 // Angemeldet und hat bereits bezahlt:
                 $subject = "Anmeldebestätigung";
@@ -153,7 +153,7 @@ class Mail_Configuration
                     "text2_3" => $text2_3,
                     "text2_4" => $text2_4,
                     "link" => $link);
-                break;
+
             case "payment_reminder":
                 // Zahlungserinnerung:
                 $subject = "Zahlungserrinnerung";
@@ -175,7 +175,7 @@ class Mail_Configuration
                     "reference" => true,  // Verwendungszweck
                     "link" => $link,
                     "formal" => true);  // no smiley in payment_reminder);
-                break;
+
             case "dunning_letter":
                 // Mahnung:
                 $subject = "Letzte Zahlungserrinnerung";
@@ -196,7 +196,7 @@ class Mail_Configuration
                     "reference" => true,  // Verwendungszweck
                     "link" => $link,
                     "formal" => true);  // no smiley in dunning letter
-                break;
+
             case "wait_list_verification":
                 // Warteliste Vormerkung:
                 $subject = "Vormerkung Warteliste";
@@ -208,7 +208,7 @@ class Mail_Configuration
                     "text1" => $text1,
                     "text2" => $text2,
                     "link" => $link);
-                break;
+
             case "wait_list_confirmation":
                 // Warteliste
                 $subject = "Eintragung in Warteliste";
@@ -220,7 +220,7 @@ class Mail_Configuration
                     "text1" => $text1,
                     "text2" => $text2,
                     "link" => $link);
-                break;
+
             case "wait_list_place_available":
                 // Warteliste: Platz frei
                 $subject = "Warteliste: Platz frei geworden";
@@ -232,7 +232,7 @@ class Mail_Configuration
                     "text1" => $text1,
                     "text2" => $text2,
                     "link" => $link);
-                break;
+
             case "course_change":
                 $subject = "Tauschanfrage";
                 $text1 = "Ein Mitglied möchte diesen Kurs mit dir tauschen.";
@@ -243,7 +243,7 @@ class Mail_Configuration
                     "text1" => $text1,
                     "text2" => $text2,
                     "link" => $link);
-                break;
+
             case "coursechange_unsubscribe":
                 $subject = "Tausch erfolgreich";
                 $text1 = "Das Mitglied hat deinen Tausch bestätigt.";
@@ -252,7 +252,7 @@ class Mail_Configuration
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2);
-                break;
+
             case "coursechange_finish":
                 $subject = "Tausch erfolgreich";
                 $text1 = "Du hast gerade erfolgreich diesen Kurs getauscht.";
@@ -261,7 +261,7 @@ class Mail_Configuration
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2);
-                break;
+
             case "voucher_payment":
                 $subject = "Open Silk Teilnahmebestätigung";
                 $text1 = "In weniger wie 30 Minuten beginnt dein Open Silk Kurs. Wir haben dir bereits einen offenen Open Silk Block abgebucht.";
@@ -270,12 +270,16 @@ class Mail_Configuration
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2);
-                break;
+
+            case "new_membership":
+                $subject = 'ASV Mitgliedschaft – Herzlich Willkommen in der Familie!';
+                $text = "Wir gratulieren dir ganz herzlich: Du bist ab sofort Mitglied bei Aerial Silk Vienna!\nDer Mitgliedsbeitrag ist bei uns eingetroffen und du bist nun für alle Vorteile freigeschalten.\n\nZur Erinnerung hier nochmal im Überblick:\n\n<strong>Welche Vorteile habe ich als Mitglied?</strong>\n• erhalte den Newsletter 2 Tage vor allen anderen\n• Vergünstigte Level-Kurse: zahle 106 Euro statt 118 Euro pro Kurs \n(gültig für alle 6-wöchigen Level-Kurse, auch Trapez, Hoop, Rope, usw.)\n• erhalte einen Open Silk 10-er Block gratis\n• Rig-Miete - du kannst unser Rig für 70 Euro statt 100 Euro/Tag mieten\n• du erhältst exklusive Einladungen zu “Mitglieder-Get Togethers” \n\nWir freuen uns, dass du 2018 ein Teil unserer Aerial Family bist.\nBei Fragen stehen wir jederzeit zur Verfügung.";
+                return array('subject' => $subject, 'text' => $text);
+
             default;
                 echo "System-Email-Art nicht gefunden!";
                 die;
                 break;
-
 
         }
 

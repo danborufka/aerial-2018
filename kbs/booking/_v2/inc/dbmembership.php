@@ -1,7 +1,9 @@
 <?php
 
-require_once(__DIR__ . '/db.php');
-require_once __DIR__ . "/dbstudent.php";
+require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/dbstudent.php';
+require_once __DIR__ . '/../../controller/mail/mail_configuration.php';
+require_once __DIR__ . '/../../controller/mail/mail_functions.php';
 
 class DbMembership extends DB
 {
@@ -191,8 +193,16 @@ class DbMembership extends DB
                 if ($studentId->error == 0) {
                     $dbStudent = new DbStudent();
                     $voucherResult = $dbStudent->saveVoucher("'Open Training 10er Block'", 10, $studentId->data->student_id);
+
+                    $studentData = $this->getSingleReadResult("SELECT email, prename, surname from as_membership_registrations where id = $p->id");
+                    
+                    global $mail_functions;
+                    $mail_functions->send_membership_activation_mail($studentData->data->email, $studentData->data->prename, $studentData->data->surname);
                 }
+
             }
+
+
             return $result;
         } else {
             return $result;

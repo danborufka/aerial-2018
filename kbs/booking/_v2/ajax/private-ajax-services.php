@@ -472,7 +472,6 @@ function MembershipsSave()
         $dbMembership = new DbMembership();
         $new_result = $dbMembership->save($parameter);
         $result = $new_result;
-
     } catch (Exception $e) {
     }
     utilities::output($result);
