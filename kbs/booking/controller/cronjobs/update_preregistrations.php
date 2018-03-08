@@ -21,7 +21,13 @@ if (isset($_GET["code"]) && $_GET["code"] == "1a4y834p96tj7433hxc1tj7435hxa5") {
 
     if(isset($_GET['debugging'])) {
         echo '<pre>';
-        
+
+        $option = $db_functions->db_get_option('course', 432, 'feedback', 'student');
+        var_dump($option);
+
+        $option2 = $db_functions->db_get_option('course', 432, 'feedback');
+        var_dump($option2);
+
         var_dump('done.');
         //var_dump($updated);
         echo '</pre>';
