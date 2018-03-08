@@ -107,6 +107,50 @@ class DB_Functions extends DB_Connect
         $db->close();
     }
 
+    public function db_get_option($pEntity, $pEntityId, $pProperty, $pRelation='') 
+    {
+        $db = $this->db_connect();
+
+        $entity = $db->real_escape_string($pEntity);
+        $entityId = $db->real_escape_string($pEntityId);
+        $property = $db->real_escape_string($pProperty);
+        $relation = $db->real_escape_string($pRelation);
+
+        $suffix = strlen($relation) ? "AND relation=$relation" : '';
+
+        $result = $db->query("SELECT * FROM as_options WHERE entity=$entity AND entity_id=$entityId AND property=$property $suffix")->fetch_array();
+        
+        $option = null;
+
+        while($option=$result->fetch_array()) {
+            return $option;
+        }
+        
+        $db->close();
+    }
+
+    public function db_set_option($entity, $entity_id, $property, $value, $relation) {
+
+        $db = $this->db_connect();
+        
+        $option     = $this->db_get_option($entity, $entity_id, $property, $value, $relation);
+        $value      = $db->real_escape_string($pValue);
+
+        if(is_null($option)) {
+            $entity     = $db->real_escape_string($entity);
+            $entityId   = $db->real_escape_string($entityId);
+            $property   = $db->real_escape_string($property);
+            $relation   = $db->real_escape_string($relation);
+
+            $query = "INSERT INTO as_options (id,entity,entity_id,relation,`property`,`value`) VALUES (NULL, $entity, $entity_id, $relation, $property, $value)";
+
+        } else {
+            $query = "UPDATE as_options SET value=$value WHERE id=$option[id]";
+        }
+        
+        $db->close();
+    }
+
 }
 
 class DB_Functions_Select_Options extends DB_Connect
@@ -5968,7 +6012,6 @@ class DB_Functions_Users extends DB_Connect
         }
 
     }
-
 
     public function db_update_user($p_id,
                                    $p_login_name,
