@@ -22,22 +22,28 @@ if (isset($_GET["code"]) && $_GET["code"] == "1a4y834p96tj7433hxc1tj7435hxa5") {
     if(isset($_GET['debugging'])) {
         echo '<pre>';
 
-        $option = $db_functions->db_get_option('course', 432, 'feedback', 'student');
-        var_dump($option);
-
-        $option2 = $db_functions->db_get_option('course', 432, 'feedback');
-        var_dump($option2);
-
         var_dump('done.');
         //var_dump($updated);
         echo '</pre>';
         exit;
     }
     
-    $updated = $db_functions_cronjobs->backoffice->update_student_statii();            // Memberships abhängig von letzter Zahlung updaten
+    $updated = $db_functions_cronjobs->backoffice->update_student_statii();         // Memberships abhängig von letzter Zahlung updaten
 
-    $db_functions_cronjobs->backoffice->db_update_preregistrations_waitlist();  // Status vorgemerkt warteliste updaten
+    $db_functions_cronjobs->backoffice->db_update_preregistrations_waitlist();      // Status vorgemerkt warteliste updaten
 
+    $feedbackForm_recipients = $db_functions->db_get_feedbackForm_recipients();     // Alle Teilnehmer holen, die im vergangenen Tag ihren letzten Kurstermin hatten
+
+    foreach ($feedbackForm_recipients as $recipient) {
+        // Im Extra Options-Table nachschauen, ob sie bereits eine Mail mit Feedbackbogen erhalten haben:
+        $option = $db_functions->db_get_option('course', $recipient['course_id'], 'feedback', 'student_' . $recipient['student_id']);
+        if($option['value'] != 1) { 
+            // wenn sie die Mail noch nicht erhalten haben raussenden
+            $mail_functions->send_course_feedback_mail($recipient['email']);
+            // und Flag speichern, damit die Mail nicht mehrmals an die selbe Person rausgeht
+            $db_functions->db_set_option('course', $recipient['course_id'], 'feedback', 1, 'student_' . $recipient['student_id']);
+        }
+    }
 
     $old_preregistrations = $db_functions_cronjobs->backoffice->db_get_old_preregistrations();
     foreach ($old_preregistrations as $to_storno) {
