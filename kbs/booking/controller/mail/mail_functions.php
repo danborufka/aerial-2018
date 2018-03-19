@@ -41,6 +41,10 @@ class Mail_Functions extends Mail_Public_Connect
             $mail_data = $this->generate_mail_membership_registration($p_registration_id);
         } else {
             $mail_data = $this->generate_mail_data($p_registration_id, $p_type_of_mail);
+
+            $mail_data_en = $this->generate_mail_data($p_registration_id, $p_type_of_mail, 'en');
+
+            $mail_data['content'] .= "\r\n\r\n\r\n------------------------------\r\n"  . $mail_data_en['content'];
         }
         $subject = $mail_data["subject"];
         $content = nl2br($mail_data["content"]);
@@ -112,6 +116,14 @@ class Mail_Functions extends Mail_Public_Connect
 
     }
 
+    public function send_course_feedback_mail($toEmail)
+    {    
+        $subject = "Gratulation zum absolvierten Kurs!";
+        $content = "Liebe/r Silkie!\r\n\r\nDu hast vor kurzem einen Kurs bei Aerial Silk Vienna absolviert. \r\nWir schicken dir hier einen Link zu unserem Feedbackbogen: \r\n\r\n<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSffqIy1B6EVPiEyShO6BUCDoWbdKLdKPISbSFAj8njIl7NArA/viewform?usp=pp_url&entry.219327794=$toEmail\">https://docs.google.com/forms/d/e/1FAIpQLSffqIy1B6EVPiEyShO6BUCDoWbdKLdKPISbSFAj8njIl7NArA/viewform?usp=pp_url&entry.219327794=$toEmail</a>\r\n\r\n Wir freuen uns auf deine Rückmeldung, Wünsche, Anregungen und Beschwerden. Nur so können wir daran arbeiten unser Programm noch mehr nach deinen Wünschen zu gestalten. \r\n\r\nDie Umfrage erfolgt natürlich freiwillig und anonym. Du kannst selbst entscheiden ob du deine Identität bekanntgeben möchtest!\r\n\r\nVielen Dank & bis bald!\r\nDein ASV Team";
+        $content = nl2br($content);
+        $this->send_html_mail_with_signature($toEmail, $subject, $content);
+    }
+
     public function send_mail_course_change($p_registration_code, $p_changemail, $p_changeid)
     {
         global $mail_configuration;
@@ -146,9 +158,9 @@ class Mail_Functions extends Mail_Public_Connect
             $content .= "Voraussetzungen: " . $data["precondition"] . "\r\n";
         }
         $content .= "\r\n";
-        $content .= $text["text1"];
+        $content .= $text["text1$suffix"];
         $content .= "\r\n";
-        $content .= $text["text2"];
+        $content .= $text["text2$suffix"];
         $content .= "\r\n";
         global $rb_configuration;
         $link = $rb_configuration->link_for_registration;
@@ -168,56 +180,102 @@ class Mail_Functions extends Mail_Public_Connect
         $output = $this->send_html_mail_with_signature($mail_to, $subject, $content);
     }
 
-    public function generate_mail_data($p_registration_id, $p_type_of_mail)
+    public function generate_mail_data($p_registration_id, $p_type_of_mail, $lang=false)
     {
         global $db_public_functions;
         global $mail_configuration;
 
+        $labels = [
+            'de' => [
+                'subject'       => 'Aerial Silk Vienna Kursbuchung',
+                'greeting'      => 'Hallo %s !',
+                'date'          => 'Datum',
+                'start'         => 'Beginn',
+                'time'          => 'Uhrzeit',
+                'dates'         => 'Termine',
+                'location'      => 'Ort',
+                'fee'           => 'Kursbeitrag',
+                'reqs'          => 'Voraussetzungen',
+                'courseNr'      => 'Kurs-Nr.',
+                'verifyLink'    => "​Achtung, der Verfizierungslink ist nur 4 Stunden gültig. \r\nSolltest du ​in dieser Zeit deinen Kursplatz per Klick auf den Verifizierungslink nicht bestätigen ist deine Voranmeldung gelöscht und die Reservierung ungültig.\r\n",
+                'outro'         => 'Alles Liebe',
+                'outro-formal'  => 'Freundliche Grüße',
+                'signature'     => 'Euer Aerial Silk Vienna Team'
+            ],
+            'en' => [
+                'subject'       => 'Aerial Silk Vienna Course Booking',
+                'greeting'      => 'Hello %s !',
+                'date'          => 'Date',
+                'start'         => 'Starting Date',
+                'time'          => 'Time',
+                'dates'         => 'Dates',
+                'location'      => 'Location',
+                'fee'           => 'Course Fee',
+                'reqs'          => 'Requirements',
+                'courseNr'      => 'Course Number',
+                'verifyLink'    => "If you don’t confirm within 4 hours your booking will be voided.\r\n",
+                'outro'         => 'Yours truly',
+                'outro-formal'  => 'All the best',
+                'signature'     => 'Your Aerial Silk Vienna Team'
+            ]
+        ];
+
+        if($lang) {
+            $suffix = "_$lang";
+        }
+
+        $language = $lang ? $lang : 'de';
+        $currentLabel = $labels[$language];
+
         $text = $mail_configuration->get_mail_text($p_type_of_mail);
+
 
         $data = $this->db_load_registration_details_for_mailing($p_registration_id);
         if ($data["error"]) {
             echo $data["error"];
             die;
         }
-        $location_id = $data["location_id"];
+        $location_id = $data['location_id'];
 
-        $subject = "Aerial Silk Vienna Kursbuchung";
-        $subject = $text["subject"] . " - " . $data["kursname"] . " - " . $data["begin"];
+        $subject = $currentLabel['subject'];
 
-        $content = "Hallo " . $data["prename"] . "!" .
-            (empty($text["formal"]) ? "" : ":)") .
-            "\r\n\r\n";
-        $content .= $text["text1"] . "\r\n\r\n";
+        if(isset($text['subject'])) {
+            $subject = "$text[subject] - $data[kursname] - $data[begin]";
+        }
+
+        $content = sprintf($currentLabel['greeting'], $data['prename']) .
+            (empty($text["formal"]) ? "" : ":)") . "\r\n\r\n";
+
+        $content .= $text["text1$suffix"] . "\r\n\r\n";
 //		if($data["textblock_mode"] == 1) {
 //			$content .= $data["textblock"] . "\r\n\r\n";
 //		}else {
         $content .= $data["kursname"] . "\r\n";
         if ($data["one_date_only"] == 1) {
-            $content .= "Datum: " . $data["begin"] . "\r\n";
+            $content .= "$currentLabel[date]: " . $data['begin'] . "\r\n";
         } else {
-            $content .= "Beginn: " . $data["begin"] . "\r\n";
+            $content .= "$currentLabel[start]: " . $data['begin'] . "\r\n";
         }
-        $content .= "Uhrzeit: " . $data["time"] . "\r\n" .
-            "Trainer: " . $data["trainer"] . "\r\n";
+        $content .= "$currentLabel[time]: " . $data['time'] . "\r\n" .
+            "Trainer: " . $data['trainer'] . "\r\n";
 
         if (!($data["one_date_only"] == 1)) {
-            $content .= "Termine: " . $data["termine"] . "\r\n";
+            $content .= "$currentLabel[dates]: " . $data["termine"] . "\r\n";
         }
         if ($data["location_id"] == 3 || $data["location_id"] == 4) {
-            $content .= "Ort: <b>" . $data["ort"] . "</b>\r\n";
+            $content .= "$currentLabel[location]: <b>" . $data["ort"] . "</b>\r\n";
         } else {
-            $content .= "Ort: " . $data["ort"] . "\r\n";
+            $content .= "$currentLabel[location]: " . $data["ort"] . "\r\n";
         }
-        $content .= "Kursbeitrag: " . $data["price"] . " €\r\n";
+        $content .= "currentLabel[fee]: " . $data["price"] . " €\r\n";
         if (!($data["precondition"] == 0 || $data["precondition"] == "")) {
-            $content .= "Voraussetzungen: " . $data["precondition"] . "\r\n";
+            $content .= "$currentLabel[reqs]: " . $data["precondition"] . "\r\n";
         }
         $content .= "\r\n";
 //		}
 
         if ($data["textblock_mode"] == 1) {
-            $content .= $data["textblock"] . "\r\n\r\n";
+            $content .= $data["textblock$suffix"] . "\r\n\r\n";
         }
 
         if ($p_type_of_mail == "standard_confirmation" && !empty($data["confirmation_text"])) {
@@ -230,44 +288,42 @@ class Mail_Functions extends Mail_Public_Connect
                 if (isset($text["text2_" . $location_id])) {
                     $content .= $text["text2_" . $location_id];    // text for location_id found, use certain location text
                 } else {
-                    $content .= $text["text2"];                // text for location_id not found, use general text
+                    $content .= $text["text2$suffix"];                // text for location_id not found, use general text
                 }
             } else {
-                $content .= $text["text2"];
+                $content .= $text["text2$suffix"];
             }
         }
 
-        if (isset($text["reference"]) && $text["reference"]) {
-            $content .= "Kurs-Nr.: " . $data["course_id"];
+        if (isset($text['reference']) && $text['reference']) {
+            $content .= "$currentLabel[courseNr]: " . $data['course_id'];
         }
 
-        if (isset($text["text3"])) {                                    // checke location_id for regular payment
-            if (isset($text["text3_" . $location_id])) {
-                $content .= $text["text3_" . $location_id];            // text for location_id found, use certain location text
+        if (isset($text["text3$suffix"])) {                                    // checke location_id for regular payment
+            if (isset($text['text3_' . $location_id])) {
+                $content .= $text['text3_' . $location_id];            // text for location_id found, use certain location text
             } else {
-                $content .= $text["text3"];                            // text for location_id not found, use general text
+                $content .= $text["text3$suffix"];                            // text for location_id not found, use general text
             }
 
         }
 
         $content .= "\r\n\r\n";
 
-        if (isset($text["link"]) && $text["link"]) {
+        if (isset($text['link']) && $text['link']) {
             global $rb_configuration;
             $link = $rb_configuration->link_for_registration;
 
-            if ($text["link"] == "verification") {
+            if ($text['link'] == 'verification') {
                 $link .= "/kbs/anmeldung/?confirm=" . $data['registration_code'] . "&s=" . $data["student_id"] . "&c=" . $data["course_id"] . "&r=" . $p_registration_id;
                 $content .= "<a href='" . $link . "'>" . $link . "</a>\r\n\r\n";
+                $content .= $currentLabel['verifyLink'];
 
-                $content .= "​Achtung, der Verfizierungslink ist nur 4 Stunden gültig.\r\n";
-                $content .= "Solltest du ​in dieser Zeit deinen Kursplatz per Klick auf den Verifizierungslink nicht bestätigen ist deine Voranmeldung gelöscht und die Reservierung ungültig.\r\n";
             } else if ($text["link"] == "waitlist") {
                 $link .= "/kbs/anmeldung/?waitlist=" . $data['registration_code'] . "&s=" . $data["student_id"] . "&c=" . $data["course_id"] . "&r=" . $p_registration_id;
                 $content .= "<a href='" . $link . "'>" . $link . "</a>\r\n\r\n";
 
-                $content .= "​Achtung, der Kursplatz ist nur 48 Stunden für dich reserviert.\r\n";
-                $content .= "Solltest du ​in dieser Zeit deinen Kursplatz per Klick auf den Verifizierungslink nicht 
+                $content .= "Achtung, der Kursplatz ist nur 48 Stunden für dich reserviert.\r\nSolltest du ​in dieser Zeit deinen Kursplatz per Klick auf den Verifizierungslink nicht 
                              bestätigen wird dein Platz für einen anderen Teilnehmer freigegeben und die Reservierung ist ungültig.\r\n";
             }
         }
@@ -303,9 +359,9 @@ class Mail_Functions extends Mail_Public_Connect
         }
 
         $content .= "\r\n" .
-            (empty($text["formal"]) ? "Alles Liebe" : "Freundliche Grüße") .
+            (empty($text["formal"]) ? $currentLabel['outro'] : $currentLabel['outro-formal']) .
             ",\r\n\r\n\r\n" .
-            "&nbsp;&nbsp;&nbsp;Euer Aerial Silk Vienna Team";
+            "&nbsp;&nbsp;&nbsp;$currentLabel[signature]";
 
         if (isset($_SESSION["production_mode"]) && $_SESSION["production_mode"] == 1) {
             $mail_to = $data["email"];
