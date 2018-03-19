@@ -110,47 +110,71 @@ class DB_Functions extends DB_Connect
     public function db_get_option($pEntity, $pEntityId, $pProperty, $pRelation='') 
     {
         $db = $this->db_connect();
+        $self = $this;
 
         $entity = $db->real_escape_string($pEntity);
         $entityId = $db->real_escape_string($pEntityId);
         $property = $db->real_escape_string($pProperty);
         $relation = $db->real_escape_string($pRelation);
 
-        $suffix = strlen($relation) ? "AND relation=$relation" : '';
+        $suffix = strlen($relation) ? "AND relation='$relation'" : '';
 
-        $result = $db->query("SELECT * FROM as_options WHERE entity=$entity AND entity_id=$entityId AND property=$property $suffix")->fetch_array();
+        $result = $db->query("SELECT * FROM as_options WHERE entity='$entity' AND entity_id='$entityId' AND property='$property' $suffix");
         
-        $option = null;
-
-        while($option=$result->fetch_array()) {
-            return $option;
+        if($result) {
+            while($option=$result->fetch_array(MYSQLI_ASSOC)) {
+                $option['id'] = intval($option['id']);
+                $option['entity_id'] = intval($option['entity_id']);
+                return $option;
+            }
         }
         
         $db->close();
     }
 
-    public function db_set_option($entity, $entity_id, $property, $value, $relation) {
-
+    public function db_set_option($pEntity, $pEntityId, $pProperty, $pValue, $pRelation) {
         $db = $this->db_connect();
         
-        $option     = $this->db_get_option($entity, $entity_id, $property, $value, $relation);
-        $value      = $db->real_escape_string($pValue);
+        if(is_string($pEntity)) {
+            $option = $this->db_get_option($pEntity, $pEntityId, $pProperty, $pRelation);
+        } else {
+            return $this->db_set_option($pEntity['entity'], $pEntity['entityId'], $pEntity['property'], $pEntity['value'], $pEntity['relation']);
+        }
+
+        $value = $db->real_escape_string($pValue);
 
         if(is_null($option)) {
-            $entity     = $db->real_escape_string($entity);
-            $entityId   = $db->real_escape_string($entityId);
-            $property   = $db->real_escape_string($property);
-            $relation   = $db->real_escape_string($relation);
+            $entity     = $db->real_escape_string($pEntity);
+            $entityId   = $db->real_escape_string($pEntityId);
+            $property   = $db->real_escape_string($pProperty);
+            $relation   = $db->real_escape_string($pRelation);
 
-            $query = "INSERT INTO as_options (id,entity,entity_id,relation,`property`,`value`) VALUES (NULL, $entity, $entity_id, $relation, $property, $value)";
+            $query = "INSERT INTO as_options (id,entity,entity_id,relation,`property`,`value`) VALUES (NULL, '$entity', '$entityId', '$relation', '$property', '$value')";
 
         } else {
-            $query = "UPDATE as_options SET value=$value WHERE id=$option[id]";
+            $query = "UPDATE as_options SET value='$value' WHERE id=$option[id]";
         }
+        $result = $db->query($query);
         
         $db->close();
+
+        return $result;
     }
 
+    public function db_get_feedbackForm_recipients() {
+        $db = $this->db_connect();
+        $recipients = array();
+
+        $result = $db->query("SELECT C.*, student.* FROM COURSES_LAST_DAY_DURING_PAST_DAY_PRESENT AS C INNER JOIN as_students AS student ON student.student_id=C.student_id");
+
+        if($result) {
+            while($recipient = $result->fetch_array(MYSQLI_ASSOC)) {
+                $recipients []= $recipient;
+            }
+        }
+        $db->close();
+        return $recipients;
+    }
 }
 
 class DB_Functions_Select_Options extends DB_Connect
