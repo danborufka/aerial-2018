@@ -39,24 +39,36 @@ class Mail_Configuration
 
     public function get_mail_text($p_type)
     {
-
         switch ($p_type) {
 
             case "verification":
                 // Vorgemerkt
-                $subject = "Vormerkung";
+                $subject = "Vormerkung / Signup";
                 $text1 = "Die Vormerkung zu folgendem Kurs war erfolgreich:";
                 $text2 = "Bitte bestätige innerhalb von 4 Stunden den folgenden Verifizierungs- Link, damit wir dir den reservierten Platz garantieren können:";
+                $text3 = "Achtung! Der Link ist nur 4 Stunden gültig!\r\nSolltest du in dieser Zeit deinen Kursplatz nicht bestätigen, wird deine Voranmeldung gelöscht.";
+
+                $text1_en = "You have successfully signed up for the following course:";
+                $text2_en = "Please use the link below to confirm your booking within the next 4 hours. ";
+                $text3_en = "If you don’t confirm within the given timeframe your booking will be voided.";
+                
                 $link = "verification";
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2,
+                    "text3" => $text3,
+
+                    "text1_en" => $text1_en,
+                    "text2_en" => $text2_en,
+                    "text3_en" => $text3_en,
+
                     "link" => $link);
                 break;
+
             case "regular_payment":
 
                 // Angemeldet aber noch nicht bezahlt:
-                $subject = "Anmeldung";
+                $subject = "Anmeldung / Signup";
                 $text1 = "Hiermit bist du erfolgreich und verbindlich für folgenden Kurs angemeldet:";
                 $text2 = "Bitte überweise den Kursbeitrag in den nächsten 5 Tagen auf folgendes Konto:\r\n" .
                     "IBAN: AT732011182865639000\r\n" . // new
@@ -95,10 +107,23 @@ class Mail_Configuration
                 "Bitte zu allen Kursen eine lange, enge Hose und ein T-Shirt, welches über die Ellbogen reicht, mitnehmen.";
                 $link = false;
 
+                $text1_en = "You are now signed up for the following course:";
+                $text2_en = "
+Please transfer the course fee to our bank account:\r\n" .
+                    "IBAN: AT732011182865639000\r\n" . // new
+                    "BIC: GIBAATWWXXX\r\n" .
+                    "Account Name: Aerial Silk Vienna\r\n" .
+                    "Reference: Course Number";
+                $text3_en = "\r\n\r\nAs soon as we receive the money we will send you an e-mail confirmation. \r\nOnly then your booking will be guaranteed.\r\n\r\n" .
+                    "Please bring a pair of long tight pants (leggings or similar) and a long sleeve shirt to your class.";
+
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2,
                     "text3" => $text3,
+                    "text1_en" => $text1_en,
+                    "text2_en" => $text2_en,
+                    "text3_en" => $text3_en,
                     "text3_1" => $text3_1,
                     "text3_2" => $text3_2,
                     "text3_3" => $text3_3,
@@ -191,11 +216,11 @@ class Mail_Configuration
                 $link = false;
 
                 return array("subject" => $subject,
-                    "text1" => $text1,
-                    "text2" => $text2,
+                    "text1"     => $text1,
+                    "text2"     => $text2,
                     "reference" => true,  // Verwendungszweck
-                    "link" => $link,
-                    "formal" => true);  // no smiley in dunning letter
+                    "link"      => $link,
+                    "formal"    => true);  // no smiley in dunning letter
 
             case "wait_list_verification":
                 // Warteliste Vormerkung:
@@ -207,7 +232,7 @@ class Mail_Configuration
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2,
-                    "link" => $link);
+                    "link"  => $link);
 
             case "wait_list_confirmation":
                 // Warteliste
@@ -219,7 +244,7 @@ class Mail_Configuration
                 return array("subject" => $subject,
                     "text1" => $text1,
                     "text2" => $text2,
-                    "link" => $link);
+                    "link"  => $link);
 
             case "wait_list_place_available":
                 // Warteliste: Platz frei
@@ -273,7 +298,7 @@ class Mail_Configuration
 
             case "new_membership":
                 $subject = 'ASV Mitgliedschaft – Herzlich Willkommen in der Familie!';
-                $text = "Wir gratulieren dir ganz herzlich: Du bist ab sofort Mitglied bei Aerial Silk Vienna!\nDer Mitgliedsbeitrag ist bei uns eingetroffen und du bist nun für alle Vorteile freigeschalten.\n\nZur Erinnerung hier nochmal im Überblick:\n\n<strong>Welche Vorteile habe ich als Mitglied?</strong>\n• erhalte den Newsletter 2 Tage vor allen anderen\n• Vergünstigte Level-Kurse: zahle 106 Euro statt 118 Euro pro Kurs \n(gültig für alle 6-wöchigen Level-Kurse, auch Trapez, Hoop, Rope, usw.)\n• erhalte einen Open Silk 10-er Block gratis\n• Rig-Miete - du kannst unser Rig für 70 Euro statt 100 Euro/Tag mieten\n• du erhältst exklusive Einladungen zu “Mitglieder-Get Togethers” \n\nWir freuen uns, dass du 2018 ein Teil unserer Aerial Family bist.\nBei Fragen stehen wir jederzeit zur Verfügung.";
+                $text = "Wir gratulieren dir ganz herzlich: Du bist ab sofort Mitglied bei Aerial Silk Vienna!\nDer Mitgliedsbeitrag ist bei uns eingetroffen und du bist nun für alle Vorteile freigeschalten.\n\nZur Erinnerung hier nochmal im Überblick:\n\n<strong>Welche Vorteile habe ich als Mitglied?</strong>\n• erhalte den Newsletter 2 Tage vor allen anderen\n• Vergünstigte Level-Kurse: zahle 106 Euro statt 118 Euro pro Kurs \n(gültig für alle 6-wöchigen Level-Kurse, auch Trapez, Hoop, Rope, usw.)\n• erhalte einen Open Silk 10-er Block gratis\n• Rig-Miete - du kannst unser Rig für 70 Euro statt 100 Euro/Tag mieten\n• du erhältst exklusive Einladungen zu “Mitglieder-Get Togethers” \n\nWir freuen uns, dass du 2018 ein Teil unserer Aerial Family bist.\nBei Fragen stehen wir jederzeit zur Verfügung.\n\n---\n";
                 return array('subject' => $subject, 'text' => $text);
 
             default;
